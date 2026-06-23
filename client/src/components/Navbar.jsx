@@ -2,12 +2,32 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav style={{ padding: "15px", background: "#222" }}>
-      <Link to="/" style={{ color: "white", marginRight: "20px" }}>
+    <nav
+      style={{
+        backgroundColor: "#222",
+        padding: "15px",
+      }}
+    >
+      <Link
+        to="/"
+        style={{
+          color: "white",
+          marginRight: "20px",
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+      >
         Dashboard
       </Link>
 
-      <Link to="/generate" style={{ color: "white" }}>
+      <Link
+        to="/generate"
+        style={{
+          color: "white",
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+      >
         Generate Content
       </Link>
     </nav>

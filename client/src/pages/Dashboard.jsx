@@ -1,17 +1,31 @@
-function Dashboard(){return <h1>AI Content Manager Dashboard</h1>} export default Dashboard;
+import Navbar from "../components/Navbar";
+
 function Dashboard() {
   return (
-    <div>
-      <h1>AI Content Manager Dashboard</h1>
+    <>
+      <Navbar />
 
-      <h3>Quick Stats</h3>
+      <div
+        style={{
+          padding: "20px",
+          textAlign: "center",
+        }}
+      >
+        <h1>AI Content Manager Dashboard</h1>
 
-      <ul>
-        <li>Total Content: 0</li>
-        <li>Generated Today: 0</li>
-        <li>Saved Drafts: 0</li>
-      </ul>
-    </div>
+        <h2>Quick Stats</h2>
+
+        <div
+          style={{
+            marginTop: "20px",
+          }}
+        >
+          <p>Total Content: 0</p>
+          <p>Generated Today: 0</p>
+          <p>Saved Drafts: 0</p>
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -1,38 +1,59 @@
-function ContentGenerator(){return <h1>Generate AI Content</h1>} export default ContentGenerator;
+import { useState } from "react";
+import API from "../services/api";
+
 function ContentGenerator() {
+  const [topic, setTopic] = useState("");
+  const [contentType, setContentType] = useState("Blog Post");
+  const [generatedContent, setGeneratedContent] = useState("");
+
+  const handleGenerate = async () => {
+    try {
+      const res = await API.post("/content/generate", {
+        topic,
+        contentType,
+      });
+
+      setGeneratedContent(res.data.generatedContent);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <h1>Generate AI Content</h1>
 
-      <form>
-        <input
-          type="text"
-          placeholder="Enter Topic"
-        />
+      <input
+        type="text"
+        placeholder="Enter Topic"
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
+      />
 
-        <br />
-        <br />
+      <br /><br />
 
-        <select>
-          <option>Blog Post</option>
-          <option>Social Media Post</option>
-          <option>Product Description</option>
-        </select>
+      <select
+        value={contentType}
+        onChange={(e) => setContentType(e.target.value)}
+      >
+        <option>Blog Post</option>
+        <option>Social Media Post</option>
+        <option>Product Description</option>
+      </select>
 
-        <br />
-        <br />
+      <br /><br />
 
-        <button type="button">
-          Generate Content
-        </button>
-      </form>
+      <button onClick={handleGenerate}>
+        Generate
+      </button>
 
-      <br />
+      <br /><br />
 
       <textarea
         rows="10"
         cols="60"
-        placeholder="Generated content will appear here..."
+        value={generatedContent}
+        readOnly
       />
     </div>
   );
