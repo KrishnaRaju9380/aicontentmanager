@@ -1,0 +1,13 @@
+/* Smooth interactive micro-interactions for cards and buttons */
+button, .card, a {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button:hover, .card:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+button:active {
+  transform: translateY(0);
+}
